@@ -23,6 +23,8 @@ public class Generics01 {
         // 4. 중첩 generics.Generics
         // 5. 타입 경계
         // 6. 와일드 카드
+        
+        // cf. Generics는 비교연산자 사용 불가
 
         //1. Generics의 type 출력
         Generics<String> gd = new Generics<>();
