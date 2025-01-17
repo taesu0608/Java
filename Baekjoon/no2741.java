@@ -10,8 +10,26 @@ public class no2741 {
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
+        // br.close
+        br.close();
         for (int i = 1; i <= n; i++) {
             System.out.println(i);
         }
     }
+    public static void other1() throws Exception {
+        BufferedReader br = new BufferedReader (new InputStreamReader(System.in));
+
+        int n = Integer.parseInt(br.readLine());
+        br.close();
+
+        StringBuilder sb = new StringBuilder();
+
+        int i = 1;
+        while(i<=n){
+            sb.append(i+'\n');
+            i++;
+        }
+        System.out.println(sb);
+    }
+
 }
