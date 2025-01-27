@@ -9,7 +9,7 @@ public class Final01 {
         1 - 1. 포인터 방식의 직접 변환 UnsafeClass()
         1 - 2. 필드 fianl 멤버와 로컬 final 멤버
     2. 메서드 final
-        - 상속시 overide 방지
+        - 상속시 override 방지
         - 공통 기능, 메서트 템플릿등 변경 사유가 없는 경우 주로 사용
             cf) 강제로 final 메서드 변경하기
                 a. 오버로딩으로 같은명의 메서드
@@ -71,7 +71,7 @@ public class Final01 {
     }
 }
 
-class Final02 extends Final01{
+final class Final02 extends Final01{
     /*
     cf) 강제로 final 메서드 변경하기
     a. 오버로딩으로 같은명의 메서드
@@ -86,8 +86,15 @@ class Final02 extends Final01{
     }
 
     public void compFinalMethod(){
+        //b. 조합(Composition) 사용
         System.out.println("this is composited final method");
         finalMethod();
     }
 }
+
+/* 3. 상속이 되지 않음
+class Final03 extends Final02(){
+
+        }
+*/
 
