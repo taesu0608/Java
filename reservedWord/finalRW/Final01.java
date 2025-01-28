@@ -92,7 +92,7 @@ final class Final02 extends Final01{
     }
 }
 
-/* 3. 상속이 되지 않음
+/* 3. 클래스 final
 class Final03 extends Final02(){
 
         }
