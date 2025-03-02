@@ -1,4 +1,4 @@
-package reservedWord.finalRW;
+package keyword.finalRW;
 import sun.misc.Unsafe;
 
 import java.lang.reflect.Field;

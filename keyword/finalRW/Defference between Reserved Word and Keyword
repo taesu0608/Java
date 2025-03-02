@@ -1,0 +1,14 @@
+모든 키워드는 예약어지만, 모든 예약어는 키워드가 아님
+
+키워드(Keyword)
+- 특정 기능을 수행하는 문법적 단어
+- ex) if, else, for
+
+예약어(Reserved Word)
+- 자바에서 특정 문맥 사용이 금지된 단어
+    1. Hard Keyword
+        - 전체 문맥에서 사용 금지
+    2. Soft Keyword
+        - 특정 문맥에서 사용 금지
+            - ex) record
+- ex) (예약어 O 키워드 X) goto, const, class, static, switch
