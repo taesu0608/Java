@@ -1,4 +1,4 @@
-package Sorting;
+package algorithm.sorting;
 
 public class BubbleSort {
     //배열을 뒷부분부터 채우기

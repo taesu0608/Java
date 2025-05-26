@@ -1,4 +1,4 @@
-package Enumeration;
+package enumeration;
 /*상수 선언 방법
     1. final static
     2. interface

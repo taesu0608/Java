@@ -1,4 +1,4 @@
-package Sorting;
+package algorithm.sorting;
 
 public class BubleSort02 {
     // Bubble정렬 응용 문제
