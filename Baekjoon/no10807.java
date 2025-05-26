@@ -39,6 +39,8 @@ public class no10807 {
                 cnt++;
         }
         bw.append(cnt+"");
+        br.close();
         bw.flush();
+        bw.close();
     }
 }
