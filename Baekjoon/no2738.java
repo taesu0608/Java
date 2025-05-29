@@ -49,11 +49,6 @@ public class no2738 {
             st = new StringTokenizer(br.readLine()," ");
             for (int j = 0; j < m; j++) {
                 A[i][j] += Integer.parseInt(st.nextToken());
-            }
-        }
-
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) {
                 bw.write(A[i][j] + " ");
             }
             bw.newLine();
