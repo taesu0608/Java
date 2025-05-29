@@ -85,9 +85,6 @@ public class no5597 {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
         int[] a = new int[31];
-        a[0] = 1;
-        int min = 0;
-        int max = 0;
 
         for (int i = 1; i < 29; i++) {
             a[Integer.parseInt(br.readLine())] = 1;
@@ -95,21 +92,9 @@ public class no5597 {
 
         for (int i = 1; i < 31; i++) {
             if (a[i] == 0) {
-                if (min == 0) {
-                    min = i;
-                } else {
-                    max = i;
-                }
+                bw.write(i + "\n");
             }
         }
-
-        if (min > max) {
-            int temp = min;
-            min = max;
-            max = temp;
-        }
-
-        bw.write(min + "\n" + max);
         br.close();
         bw.flush();
         bw.close();
