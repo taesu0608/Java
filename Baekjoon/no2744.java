@@ -19,19 +19,16 @@ wRONGaNSWER*/
 public class no2744 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-
+        StringBuilder sb = new StringBuilder();
         String input = br.readLine();
         for (int i = 0; i < input.length(); i++) {
             if ( 'a' <= input.charAt(i) && input.charAt(i) <= 'z') {
-                bw.append((char)((int)input.charAt(i) - 32));
+                sb.append((char)(input.charAt(i)-32));
             } else if ( 'A' <= input.charAt(i) && input.charAt(i) <= 'Z') {
-                bw.append((char)((int)input.charAt(i) + 32));
+                sb.append((char)(input.charAt(i)+32));
             }
         }
-
-        br.close();
-        bw.flush();
+        System.out.println(sb);
         br.close();
     }
 }
