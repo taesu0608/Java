@@ -42,9 +42,10 @@ public class no11720 {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         int result = 0;
         int n = Integer.parseInt(br.readLine());
+        String input = br.readLine();
 
         for (int i = 0; i < n; i++) {
-            result += br.read() - '0';
+            result += input.charAt(i) - '0';
         }
         br.close();
         bw.write("" + result);
