@@ -31,11 +31,11 @@ public class no2439 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int i = Integer.parseInt(br.readLine());
-        for (int x = 0; x < i; x++) {
-            for (int y = x; y < i - 1; y++) {
+        for (int x = 1; x <= i; x++) {
+            for (int y = i; y > x; y--) {
                 System.out.print(" ");
             }
-            for (int y = 0; y < x + 1 ; y++) {
+            for (int y = 0; y < x; y++) {
                 System.out.print("*");
             }
             System.out.print("\n");
