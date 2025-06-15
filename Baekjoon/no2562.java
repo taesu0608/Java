@@ -35,13 +35,17 @@ public class no2562 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        int max = Integer.parseInt(br.readLine());
-        int input;
-        int line = 1;
-        for (int i = 0; i < 8; i++) {
-                if((input = Integer.parseInt(br.readLine())) > max) {
-                    max = input;
-                    line = i + 2;
+
+        int[] num = new int[9];
+        for (int i = 0; i < 9; i++){
+            num[i] = Integer.parseInt(br.readLine());
+        }
+        int max = num[0];
+        int line = 0;
+        for (int i = 1; i < 9; i++) {
+                if(num[i] > max) {
+                    max = num[i];
+                    line = i + 1;
                 }
             }
         bw.write(max+"\n");
