@@ -41,7 +41,7 @@ public class no2562 {
         for (int i = 0; i < 8; i++) {
                 if((input = Integer.parseInt(br.readLine())) > max) {
                     max = input;
-                    line = i + 1;
+                    line = i + 2;
                 }
             }
         bw.write(max+"\n");
