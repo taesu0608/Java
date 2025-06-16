@@ -1,4 +1,4 @@
-package inheritance;
+package javaconcept.inheritance;
 
 public class Wolf extends Animal{
     Wolf(String name){

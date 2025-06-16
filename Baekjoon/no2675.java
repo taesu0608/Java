@@ -35,10 +35,12 @@ public class no2675 {
             int a = Integer.parseInt(st.nextToken());
             String b = st.nextToken();
 
-            for (int j = 0; j < a; j++){
-                bw.append(b.charAt(i)+"");
+            for(int j = 0; j < b.length(); j++) {
+                for(int k = 0; k < a; k++) {
+                    bw.write(b.charAt(j)+"");
+                }
             }
-            bw.append("\n");
+            bw.newLine();
         }
         br.close();
         bw.flush();

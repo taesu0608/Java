@@ -1,4 +1,4 @@
-package inheritance;
+package javaconcept.inheritance;
 
 public class Animal {
     String name;

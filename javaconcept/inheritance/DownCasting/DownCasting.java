@@ -1,4 +1,4 @@
-package inheritance.DownCasting;
+package javaconcept.inheritance.DownCasting;
 
 public class DownCasting {
     /*
