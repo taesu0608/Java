@@ -29,17 +29,16 @@ public class no10818 {
         int roop = Integer.parseInt(br.readLine());
         StringTokenizer st = new StringTokenizer(br.readLine());
 
+        int min = 1000000;
+        int max = -1000001;
+        int[] num = new int[roop];
+        for (int i = 0; i < roop; i++) {
+            num[i] = Integer.parseInt(st.nextToken());
+        }
 
-        int max = Integer.parseInt(st.nextToken());
-        int min = max;
-        int temp;
-        for (int i = 1; i < roop; i++) {
-            if ((temp = Integer.parseInt(st.nextToken()))>max)
-            {
-                max = temp;
-            } else if(temp<min){
-                min = temp;
-            }
+        for (int i = 0; i < roop; i++) {
+            min = Math.min(min, num[i]);
+            max = Math.max(max, num[i]);
         }
 
         br.close();
