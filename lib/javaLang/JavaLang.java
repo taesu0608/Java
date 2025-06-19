@@ -1,6 +1,6 @@
-package lib.javaLangClass;
+package lib.javaLang;
 
-public class JavaLangClass {
+public class JavaLang {
     /* 클래스 정보를 출력하는 3가지 방법
     1. getClass
     2. literal
