@@ -28,6 +28,7 @@ import java.util.StringTokenizer;
 10 20 30
 예제 출력 2
 66.666667
+
 예제 입력 3
 4
 1 100 100 100
@@ -54,6 +55,24 @@ public class no1546 {
         for (double k: values) {
             sum += k/max * 100;
         }
+
+        System.out.println(sum/count);
+    }
+    public static void another(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int count = Integer.parseInt(br.readLine());
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        int max = 0;
+        double sum = 0;
+        int[] values = new int[count];
+        for (int i = 0; i < count; i++) {
+            max = Math.max(max,values[i] = Integer.parseInt(st.nextToken()));
+            sum += values[i];
+        }
+
+        sum = sum/max * 100;
+
 
         System.out.println(sum/count);
     }
