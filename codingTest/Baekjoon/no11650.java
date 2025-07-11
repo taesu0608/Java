@@ -60,13 +60,13 @@ public class no11650 {
         int count = Integer.parseInt(br.readLine());
         String[] split;
         int[][] input = new int[count][2];
-
+        // 각 좌표를 x,y로 저장
         for (int i = 0; i < count; i++) {
             split = br.readLine().split(" ");
             input[i][0] = Integer.parseInt(split[0]);
             input[i][1] = Integer.parseInt(split[1]);
         }
-
+        // n번째 배열 = x , n + 1 번째 배열 = y
         Arrays.sort(input, (x,y) -> {
             return x[0] == y[0] ? x[1] - y[1] : x[0] - y[0];
         });
