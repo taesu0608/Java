@@ -61,10 +61,20 @@ public class no1018 {
         // black = true, white = false
         input = new boolean[rows][cols];
 
+        /*
+        * [as is]
+        * br.readline 이후 StringTokenizer로 "" 단위로 끊어 String[] 으로 처리
+        *
+        * [to be]
+        * br.readline을 String으로 저장 이후 charAt()으로 처리
+        *
+        * 한글자씩 처리는 ""로 Token화가 아닌 charAt()으로 처리
+        * */
         for (int i = 0; i < rows; i++) {
-            String[] chars = br.readLine().split("");
+            String line = br.readLine();
             for (int j = 0; j < cols; j++) {
-                input[i][j] = (chars[j].equals("B"))?true:false;
+                // as is 삼항연산자, to be 삼항연산자 삭제
+                input[i][j] = line.charAt(j) == 'B';
             }
         }
 
