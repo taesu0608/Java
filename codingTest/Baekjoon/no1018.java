@@ -60,26 +60,6 @@ public class no1018 {
         int cols = Integer.parseInt(st.nextToken());
         // black = true, white = false
         input = new boolean[rows][cols];
-        boolean[][] correctB = {
-                {true, false, true, false, true, false, true, false},
-                {false, true, false, true, false, true, false, true},
-                {true, false, true, false, true, false, true, false},
-                {false, true, false, true, false, true, false, true},
-                {true, false, true, false, true, false, true, false},
-                {false, true, false, true, false, true, false, true},
-                {true, false, true, false, true, false, true, false},
-                {false, true, false, true, false, true, false, true},
-        };
-        boolean[][] correctW = {
-                {false, true, false, true, false, true, false, true},
-                {true, false, true, false, true, false, true, false},
-                {false, true, false, true, false, true, false, true},
-                {true, false, true, false, true, false, true, false},
-                {false, true, false, true, false, true, false, true},
-                {true, false, true, false, true, false, true, false},
-                {false, true, false, true, false, true, false, true},
-                {true, false, true, false, true, false, true, false}
-        };
 
         for (int i = 0; i < rows; i++) {
             String[] chars = br.readLine().split("");
@@ -89,24 +69,29 @@ public class no1018 {
         }
 
         int result = Integer.MAX_VALUE;
-        for (int i = 0; i < rows - 7; i++) {
-            for (int j = 0; j < cols - 7; j++) {
-                result = Math.min(result,Math.min(64-check(input,correctB,i,j),64-check(input,correctW,i,j)));
+        int rows_S = rows - 7;
+        int cols_S = cols - 7;
+        for (int i = 0; i < rows_S; i++) {
+            for (int j = 0; j < cols_S; j++) {
+                result = Math.min(result,check(i, j));
             }
         }
 
         System.out.println(result);
 
     }
-    static int check(boolean[][] a,boolean[][] b, int n, int m){
+    static int check(int n, int m){
         int count = 0;
-        for (int i = 0; i < b.length; i++) {
-            for (int j = 0; j < b[i].length; j++) {
-                if (a[i+n][j+m]==b[i][j]) {
+        boolean TF = true;
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (input[i+n][j+m]==TF) {
                     count++;
                 }
+                TF = !TF;
             }
+            TF = !TF;
         }
-        return count;
+        return Math.min(count,64-count);
     }
 }
