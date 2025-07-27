@@ -125,7 +125,8 @@ public class no2164 {
         int input = Integer.parseInt(br.readLine());
         int n = 1;
         while(n <= input){
-
+            n *= 2;
         }
+        System.out.println(n/2==input?input:2*(input-n/2));
     }
 }
