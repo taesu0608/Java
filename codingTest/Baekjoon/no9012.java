@@ -39,7 +39,7 @@ YES
 NO
 */
 public class no9012 {
-    public static void main(String[] args) throws IOException {
+    public static void another(String[] args) throws IOException {
         // stack + flag 방식
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb = new StringBuilder();
@@ -76,8 +76,59 @@ public class no9012 {
 
         System.out.println(sb);
     }
-    // 수학적 풀이
-    public static void another(String[] args) throws IOException {
+    public static void another2(String[] args) throws IOException {
+        // 수학적 풀이
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
+        int count = Integer.parseInt(br.readLine());
 
+        for(int i = 0; i < count; i++) {
+            int state = 0;
+
+            String line = br.readLine();
+            for(int j = 0; j < line.length(); j++) {
+                if(line.charAt(j) == '(') {
+                    state++;
+                } else if(line.charAt(j) == ')') {
+                    state--;
+                    if(state < 0) {
+                        break;
+                    }
+                }
+            }
+            sb.append(state==0?"YES\n":"NO\n");
+        }
+
+        System.out.println(sb);
+    }
+
+    public static void main(String[] args) throws IOException {
+        // 수학적 풀이 + break-> return으로 변환
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
+        int count = Integer.parseInt(br.readLine());
+
+        for(int i = 0; i < count; i++) {
+
+            String line = br.readLine();
+
+            sb.append(isValidParentheses(line)?"YES\n":"NO\n");
+        }
+
+        System.out.println(sb);
+    }
+
+    static boolean isValidParentheses(String ps) {
+        int depth = 0;
+
+        int n = ps.length();
+        for(int j = 0; j < n; j++) {
+            if(ps.charAt(j) == '(') {
+                depth++;
+            } else{
+                if(--depth < 0) return false;
+            }
+        }
+        return depth == 0;
     }
 }
