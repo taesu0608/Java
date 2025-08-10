@@ -1,4 +1,4 @@
-package Arrays.Array;
+package Collections.Array.Arrays;
 
 public class Length {
     public static void main(String[] args) {
