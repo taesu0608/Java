@@ -32,7 +32,7 @@ import java.util.StringTokenizer;
 3 0 0 1 2 0 0 2
 */
 public class no10816 {
-    public static void main(String[] args) throws IOException {
+    public static void another(String[] args) throws IOException {
         // Map으로 k,v <수, 수의 갯수>
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
@@ -53,9 +53,39 @@ public class no10816 {
         st = new StringTokenizer(br.readLine());
         for(int i = 0; i < input2; i++) {
             int findKey = Integer.parseInt(st.nextToken());
-            bw.append(map.compute(findKey,  (k, v) -> (v == null) ? 0 : v)+" ");
+            bw.append(map.getOrDefault(findKey, 0)+" ");
         }
 
         bw.flush();
+        bw.close();
+    }
+
+    // Array 배열 사용
+    static final int DefaultValue = 10_000_000;
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
+        StringTokenizer st;
+
+        int[] input = new int[DefaultValue * 2];
+
+        int roop = Integer.parseInt(br.readLine());
+        st = new StringTokenizer(br.readLine());
+
+        // 값 저장 index = 수, 요소 = 수의 빈도
+        for (int i = 0; i < roop; i++) {
+            int index = Integer.parseInt(st.nextToken());
+            input[DefaultValue + index] += 1;
+        }
+
+        // 값 탐색
+        int roop2= Integer.parseInt(br.readLine());
+        st = new StringTokenizer(br.readLine());
+        for (int i = 0; i < roop2; i++) {
+            int index = Integer.parseInt(st.nextToken());
+            sb.append(input[DefaultValue + index]+" ");
+        }
+
+        System.out.println(sb);
     }
 }
