@@ -67,7 +67,7 @@ public class no10816 {
         StringBuilder sb = new StringBuilder();
         StringTokenizer st;
 
-        int[] input = new int[DefaultValue * 2];
+        int[] input = new int[DefaultValue * 2 + 1];
 
         int roop = Integer.parseInt(br.readLine());
         st = new StringTokenizer(br.readLine());
