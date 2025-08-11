@@ -1,8 +1,6 @@
 package codingTest.Baekjoon;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.StringTokenizer;
@@ -37,6 +35,7 @@ public class no10816 {
     public static void main(String[] args) throws IOException {
         // Map으로 k,v <수, 수의 갯수>
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         StringTokenizer st;
         Map<Integer,Integer> map = new HashMap<>();
 
@@ -44,15 +43,19 @@ public class no10816 {
         int input1 = Integer.parseInt(br.readLine());
         st = new StringTokenizer(br.readLine());
         for(int i = 0; i < input1; i++) {
-            st.nextToken();
-           /* map.entrySet().stream().set*/
+            int key = Integer.parseInt(st.nextToken());
+            // 미존재하는 key 는 1로 설정, key 존재시 value +1;
+            map.merge(key, 1, Integer::sum);
         }
 
         //확인해야할 카드
         int input2 = Integer.parseInt(br.readLine());
         st = new StringTokenizer(br.readLine());
-        for(int i = 0; i < input1; i++) {
-            st.nextToken();
+        for(int i = 0; i < input2; i++) {
+            int findKey = Integer.parseInt(st.nextToken());
+            bw.append(map.compute(findKey,  (k, v) -> (v == null) ? 0 : v)+" ");
         }
+
+        bw.flush();
     }
 }
