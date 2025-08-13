@@ -55,6 +55,9 @@ top
 */
 public class no10828 {
     static LinkedList<Integer> stack = new LinkedList();
+    static int[] array = new int[100_000];
+    static int c_idx = 0;
+
     public static void main(String[] args) throws IOException {
         // LinkedList 사용
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -74,22 +77,39 @@ public class no10828 {
         }
     }
 
-    static public void push(int input) {
+    static public void push2(int input) {
         stack.push(input);
     }
-    static public int pop() {
+    static public int pop2() {
         if (stack.isEmpty()) return -1;
         return stack.pop();
     }
-    static public int size() {
+    static public int size2() {
         return stack.size();
     }
-    static public boolean empty() {
+    static public boolean empty2() {
         return stack.isEmpty();
     }
-    static public int top() {
+    static public int top2() {
         if (stack.isEmpty()) return -1;
         return stack.peek();
     }
 
+    static public void push(int input) {
+        array[c_idx++] = input;
+    }
+    static public int pop() {
+        if (empty()) return -1;
+        return array[--c_idx];
+    }
+    static public int size() {
+        return c_idx;
+    }
+    static public boolean empty() {
+        return c_idx == 0;
+    }
+    static public int top() {
+        if (empty()) return -1;
+        return array[c_idx-1];
+    }
 }
