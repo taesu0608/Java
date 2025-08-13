@@ -3,6 +3,7 @@ package codingTest.Baekjoon;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Queue;
 
 /*
 문제
@@ -26,20 +27,20 @@ N과 K가 주어지면 (N, K)-요세푸스 순열을 구하는 프로그램을 �
 <3, 6, 2, 7, 5, 1, 4>
 */
 public class no11866 {
-    public static void main(String[] args) throws IOException {
+    public static void another(String[] args) throws IOException {
         // 단순 반복 + flag
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb = new StringBuilder();
         String[] temp = br.readLine().split(" ");
 
-        int roop = Integer.parseInt(temp[0]);
+        int loop = Integer.parseInt(temp[0]);
         int step = Integer.parseInt(temp[1]);
         int index = 0;
-        boolean[] array = new boolean[roop];
+        boolean[] array = new boolean[loop];
 
         sb.append("<");
 
-        for (int i = 0; i < roop; i++) {
+        for (int i = 0; i < loop; i++) {
             for (int j = 0; j < step; j++) {
                 if (array[index]) {
                     j--;
@@ -47,15 +48,80 @@ public class no11866 {
                     if(j == step - 1){
                         array[index] = true;
                         sb.append(index + 1);
-                        if (i < roop-1) { sb.append(", ");}
+                        if (i < loop-1) { sb.append(", ");}
                     }
                 }
                 index++;
-                index %= roop;
+                index %= loop;
             }
         }
 
         sb.append(">");
         System.out.println(sb);
+    }
+
+    public static void main(String[] args) throws IOException {
+    // 원형 큐
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuffer sb = new StringBuffer();
+        String[] input = br.readLine().split(" ");
+
+        int roop = Integer.parseInt(input[0]);
+        int step = Integer.parseInt(input[1]);
+
+        C_Queue cq = new C_Queue(roop + 1);
+        sb.append("<");
+        for (int i = 0; i < roop; i++) {
+            cq.push(i + 1);
+        }
+
+        while (!cq.isEmpty()) {
+            for (int i = 0; i < step - 1; i++) {
+                int x = cq.pop();
+                cq.push(x);
+            }
+            sb.append(cq.pop());
+            if(!cq.isEmpty()) sb.append(", ");
+        }
+        sb.append(">");
+
+        System.out.println(sb);
+    }
+
+    public static class C_Queue {
+        int[] array;
+        int capacity = 0;
+        int front = 0;
+        int rear = 0;
+        public C_Queue(int capacity){
+            this.capacity = capacity;
+            array = new int[capacity];
+        }
+
+        public int push(int i){
+            if(!isFull()){
+                int result = array[rear] = i;
+                rear = (rear + 1) % capacity;
+                return result;
+            }
+            return 0;
+        }
+        public int pop(){
+            if(!isEmpty()) {
+                int result = array[front];
+                front = (front + 1) % capacity;
+                return result;
+            }
+            return 0;
+        }
+        public boolean isEmpty(){
+            if(front==rear) return true;
+            else return false;
+        }
+
+        public boolean isFull(){
+            if(front==(rear + 1)%capacity) return true;
+            return false;
+        }
     }
 }
