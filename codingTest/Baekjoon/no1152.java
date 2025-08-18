@@ -34,10 +34,56 @@ The last character is a blank
 6
 */
 public class no1152 {
-    public static void main(String[] args) throws IOException {
+    public static void another(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
 
         System.out.println(st.countTokens());
+    }
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String input = br.readLine().trim();
+        int count = 0;
+        for (int i = 0; i < input.length(); i++) {
+            //공백시 반응
+            if(input.charAt(i)==' ') {
+                // 첫 공백 제외
+                if(i==0){continue;}
+                // 막 공백 제외
+                if(i==input.length()-1){break;}
+                count++;
+            }
+        }
+
+
+        if (input.length() == 0) {
+            System.out.println(0);
+        } else {
+            System.out.println(input.split(" ").length);
+        }
+    }
+    public static void another2(String[] args) throws IOException {
+
+        int count = 0;
+        int pre_str = 32; // 공백을 의미
+        int str;
+
+        while (true){
+            str = System.in.read();
+
+            // 입력받은 문자가 공백일 때,
+            if(str == 32){
+                if(pre_str != 32){count++;}
+            }
+
+            else if(str == 10){
+                if(pre_str != 32){count++;}
+                break;
+            }
+
+            pre_str = str;
+        }
+
+        System.out.println(count);
     }
 }
