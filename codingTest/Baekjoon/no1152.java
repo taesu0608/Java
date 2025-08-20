@@ -40,7 +40,7 @@ public class no1152 {
 
         System.out.println(st.countTokens());
     }
-    public static void main(String[] args) throws IOException {
+    public static void another2(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String input = br.readLine().trim();
         int count = 0;
@@ -62,8 +62,8 @@ public class no1152 {
             System.out.println(input.split(" ").length);
         }
     }
-    public static void another2(String[] args) throws IOException {
-
+    public static void main(String[] args) throws IOException {
+        //마지막 입력시 lncf를 활용한 로직 처리
         int count = 0;
         int pre_str = 32; // 공백을 의미
         int str;
@@ -76,7 +76,7 @@ public class no1152 {
                 if(pre_str != 32){count++;}
             }
 
-            else if(str == 10){
+            else if(str == 10){ //lf가 왔을 때,
                 if(pre_str != 32){count++;}
                 break;
             }
