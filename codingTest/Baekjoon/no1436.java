@@ -38,16 +38,18 @@ public class no1436 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int a = Integer.parseInt(br.readLine());
+        int i = 666;
+        while(true){
 
-        for (int i = 666; i < 10000000; i++) {
             String input = String.valueOf(i);
             if(input.contains("666")){
                 a--;
-                if(a==0) {
-                    System.out.println(i);
-                    break;
+                    if(a==0) {
+                        System.out.println(i);
+                        break;
                     }
                 }
+            i++;
             }
         }
 }
