@@ -1,2 +1,4 @@
-package codingTest.Baekjoon;public class KafkaConsumerTest {
+package codingTest.Baekjoon;
+
+public class KafkaConsumerTest {
 }
