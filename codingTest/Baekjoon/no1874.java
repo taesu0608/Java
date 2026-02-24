@@ -61,31 +61,32 @@ public class no1874 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int loop = Integer.parseInt(br.readLine());
-        int[] input = new int[loop];
-        for(int i = 0; i < loop; i++){
-            input[i] = Integer.parseInt(br.readLine());
-        }
+        int input = Integer.parseInt(br.readLine());
+        int readCount = 1;
 
         Stack<Integer> st = new Stack<>();
         StringBuilder sb = new StringBuilder();
-        int idx = 0;
         for(int i = 1; i <= loop; i++){
             st.push(i);
-            if(i==1) sb.append("+");
-            else sb.append("\n").append("+");
-            while(true){
-                if(!st.isEmpty() && st.peek()==input[idx]){
-                    st.pop();
-                    idx++;
-                    sb.append("\n").append("-");
-                } else{
-                    break;
+            sb.append("+").append("\n");
+            while(!st.isEmpty() && st.peek()==input){
+                if (st.peek() > input && i + 1 != input) {
+                    System.out.print("NO");
+                    return;
                 }
-            }
-            if(i == loop){
-                if(idx != loop) System.out.print("NO");
-                else System.out.print(sb);
+                    st.pop();
+                    sb.append("-").append("\n");
+
+                    if(readCount == loop){break;}
+                    input = Integer.parseInt(br.readLine());
+                    readCount++;
             }
         }
+        // readCount == loop
+        /*if(readCount != loop && !st.isEmpty()) System.out.print("NO");
+        else {*/
+            if (sb.length() > 0) sb.setLength(sb.length() - 1);
+            System.out.print(sb);
+        //}
     }
 }
