@@ -15,6 +15,9 @@ public class SelectionSort {
             arr[i] = Integer.parseInt(br.readLine());
         }
 
+        /*
+        ;pp
+        * */
         for(int i = 0; i < loop - 1; i++){
             least = i;
             for(int j = i + 1; j < loop; j++){
