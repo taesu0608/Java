@@ -16,8 +16,8 @@ public class SelectionSort {
         }
 
         /*
-        ;pp
-        * */
+        최솟값의 index를 찾고 이후에 교환 방식
+        */
         for(int i = 0; i < loop - 1; i++){
             least = i;
             for(int j = i + 1; j < loop; j++){
