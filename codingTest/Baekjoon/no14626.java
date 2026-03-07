@@ -53,7 +53,7 @@ public class no14626 {
             int n = s.charAt(i) - '0';
             sum += ((i + 1) % 2 == 0) ? 3 * n : n;
             }else{
-                flag3 = (i + 1)%2 == 0? true : false;
+                flag3 = (i + 1)%2 == 0;
             }
         }
         /*
