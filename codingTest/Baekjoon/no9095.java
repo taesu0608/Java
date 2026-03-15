@@ -78,7 +78,7 @@ public class no9095 {
             boolean[] b = new boolean[input[i] - 1];
             Queue<Data> q = new ArrayDeque<>();
             int cnt = 0;
-            q.offer(new Data(0, 0, b));
+            q.offer(new Data(0, 0));
             while(!q.isEmpty()) {
                 Data data = q.poll();
                 if(data.idx == input[i] - 1) {
