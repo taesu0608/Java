@@ -42,16 +42,33 @@ public class no9095 {
     static class Data {
         int idx;
         int check;
-        boolean[] visited;
 
-        Data(int idx, int check,boolean[] visited) {
+        Data(int idx, int check) {
             this.idx = idx;
             this.check = check;
-            this.visited = visited.clone();
         }
     }
 
     public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
+        int loop = Integer.parseInt(br.readLine());
+        int input[] = new int[loop];
+
+        for(int i = 0; i < loop; i++){
+            input[i] = Integer.parseInt(br.readLine());
+            int[] dp = new int[input[i]];
+            dp[0] = 1;
+            dp[1] = 2;
+            dp[2] = 4;
+            for(int n = 3; n < input[i]; n++){
+                dp[n] = dp[n - 3]+ dp[n - 2] + dp[n - 1];
+            }
+            sb.append(dp[input[i] -1]).append("\n");
+        }
+        System.out.println(sb);
+    }
+    public static void another(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb = new StringBuilder();
         int loop = Integer.parseInt(br.readLine());
@@ -69,13 +86,10 @@ public class no9095 {
                     continue;
                 }
                 if(data.check < 2) {
-                    data.visited[data.idx] = false;
-                    q.offer(new Data(data.idx + 1, data.check + 1, data.visited));
-                    data.visited[data.idx] = true;
-                    q.offer(new Data(data.idx + 1, 0, data.visited));
+                    q.offer(new Data(data.idx + 1, data.check + 1));
+                    q.offer(new Data(data.idx + 1, 0));
                 } else {
-                    data.visited[data.idx] = true;
-                    q.offer(new Data(data.idx + 1, 0, data.visited));
+                    q.offer(new Data(data.idx + 1, 0));
                 }
             }
             sb.append(cnt).append("\n");
