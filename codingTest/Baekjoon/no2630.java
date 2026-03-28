@@ -72,33 +72,28 @@ public class no2630 {
             }
         }
 
-        devide(new int[][] {{0,loop},{0,loop}});
+        divide(0, 0, loop);
 
         System.out.println(white + "\n" + blue);
     }
 
-    public static void devide(int[][]idx) {
-        int x_size = idx[x][1] - idx[x][0];
-        int y_size = idx[y][1] - idx[y][0];
-        boolean flag = false;
-        if(x_size == 1){flag = true;}
-        for(int i = idx[x][0]; i < idx[x][1]; i++){
-            if(flag) break;
-            for(int j = idx[y][0]; j < idx[y][1]; j++){
-                if(flag) break;
-                if(arr[idx[x][0]][idx[y][0]] != arr[i][j]){
-                    devide(new int[][]{{idx[x][0],idx[x][0] + x_size/2},{idx[y][0],idx[y][0] + y_size/2}});
-                    devide(new int[][]{{idx[x][0] + x_size/2,idx[x][1]},{idx[y][0],idx[y][0] + y_size/2}});
-                    devide(new int[][]{{idx[x][0],idx[x][0] + x_size/2},{idx[y][0] + y_size/2,idx[y][1]}});
-                    devide(new int[][]{{idx[x][0] + x_size/2,idx[x][1]},{idx[y][0] + y_size/2,idx[y][1]}});
+    public static void divide(int row, int col, int size) {
+        boolean first = arr[row][col];
+
+        for (int i = row; i < row + size; i++) {
+            for (int j = col; j < col + size; j++) {
+                if (arr[i][j] != first) {
+                    int half = size / 2;
+                    divide(row, col, half);
+                    divide(row, col + half, half);
+                    divide(row + half, col, half);
+                    divide(row + half, col + half, half);
                     return;
                 }
             }
         }
-        flag = true;
 
-        if(flag && arr[idx[x][0]][idx[y][1]-1]){blue++;
-        }
-        else if(flag && !arr[idx[x][0]][idx[y][1]-1]){white++;}
+        if (first) blue++;
+        else white++;
     }
 }
