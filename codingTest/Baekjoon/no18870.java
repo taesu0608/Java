@@ -1,8 +1,12 @@
 package codingTest.Baekjoon;
 
+import algorithm.Hash.Hash;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.StringTokenizer;
 
 /*
@@ -41,6 +45,33 @@ X1, X2, ..., XN에 좌표 압축을 적용한 결과 X'1, X'2, ..., X'N를 출�
 */
 public class no18870 {
     public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st;
+        int loop = Integer.parseInt(br.readLine());
+        StringBuilder sb = new StringBuilder();
+        int[] origin = new int[loop];
+        int[] sorted = new int[loop];
+        st = new StringTokenizer(br.readLine());
+
+        for (int i = 0; i < loop; i++) {
+            origin[i] = Integer.parseInt(st.nextToken());
+            sorted[i] = origin[i];
+        }
+
+        Arrays.sort(sorted);
+        HashMap<Integer, Integer> map = new HashMap<>();
+        int cnt = 0;
+        for (int i = 0; i < loop; i++) {
+            if(!map.containsKey(sorted[i])){map.put(sorted[i], cnt++);}
+        }
+
+        for (int i = 0; i < loop; i++) {
+            sb.append(map.get(origin[i])).append(" ");
+        }
+
+        System.out.println(sb);
+    }
+    public static void another(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st;
         int loop = Integer.parseInt(br.readLine());
