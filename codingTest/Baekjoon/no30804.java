@@ -69,18 +69,18 @@ $4$개입니다.
 public class no30804 {
     static boolean[][] visited;
     static int arr[];
+
     public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int loop = Integer.parseInt(br.readLine());
+
+        for(int i)
+    }
+    public static void another(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int loop = Integer.parseInt(br.readLine());
         arr  = new int[loop];
         visited = new boolean[loop][loop];
-
-        for (int i = 1; i < loop; i++) {
-            for (int j = loop - i; j < loop; j++) {
-                visited[i][j] = true;
-                //System.out.println(i + " " + j);
-            }
-        }
 
         StringTokenizer st = new StringTokenizer(br.readLine());
         for (int i = 0; i < loop; i++) {
@@ -99,17 +99,24 @@ public class no30804 {
             set = new HashSet<>();
             int left = eli[0];
             int right = eli[1];
+            if (left + right >= arr.length) continue;
             if(left >= arr.length || right >= arr.length){continue;}
             if(visited[left][right]){continue;}
-            visited[left][right] = true;
             for(int i = left; i < arr.length - right; i++){
                 set.add(arr[i]);
+                if(set.size() > 2) break;
             }
             if(set.size() <= 2){
                 return arr.length - right - left;
             }
-            q.offer(new int[]{left + 1,right});
-            q.offer(new int[]{left,right + 1});
+            if (left + 1 <= arr.length && !visited[left + 1][right]) {
+                visited[left + 1][right] = true;
+                q.offer(new int[]{left + 1, right});
+            }
+            if (right + 1 <= arr.length && !visited[left][right + 1]) {
+                visited[left][right + 1] = true;
+                q.offer(new int[]{left, right + 1});
+            }
         }
         return 2;
     }
