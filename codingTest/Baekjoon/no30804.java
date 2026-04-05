@@ -1,7 +1,5 @@
 package codingTest.Baekjoon;
 
-import algorithm.Hash.Hash;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -72,9 +70,33 @@ public class no30804 {
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int loop = Integer.parseInt(br.readLine());
+        int n = Integer.parseInt(br.readLine());
+        int[] input = new int[n];
 
-        for(int i)
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        for (int i = 0; i < n; i++) {
+            input[i] = Integer.parseInt(st.nextToken());
+        }
+
+        int[] count = new int[10];
+        int left = 0;
+        int kind = 0;
+        int result = 0;
+
+        for (int right = 0; right < n; right++) {
+            if (count[input[right]] == 0) kind++;
+            count[input[right]]++;
+
+            while (kind > 2) {
+                count[input[left]]--;
+                if (count[input[left]] == 0) kind--;
+                left++;
+            }
+
+            result = Math.max(result, right - left + 1);
+        }
+
+        System.out.println(result);
     }
     public static void another(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
