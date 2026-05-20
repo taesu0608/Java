@@ -1,4 +1,4 @@
-package codingTest.toss;
+package codingTest.PastTest;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -36,13 +36,17 @@ public class NEXT2022 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String s = br.readLine();
+        int left = 0;
         int result = -1;
-        for (int i = 0; i < s.length()-2; i++) {
-            if(s.charAt(i)==s.charAt(i+1) && s.charAt(i+1)==s.charAt(i+2)){
-                result = Math.max(result,Integer.parseInt(s.substring(i,i+3)));
+        while(left + 2 < s.length()) {
+            int a = s.charAt(left);
+            if(a == s.charAt(left + 1) && a == s.charAt(left + 2)) {
+                result = Math.max(result, Integer.parseInt(s.substring(left,left+3)));
             }
+            left++;
         }
 
-        System.out.println(result);
+        if(result == 0) { System.out.println(0); return;}
+        System.out.print(result);
     }
 }
