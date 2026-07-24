@@ -5,6 +5,13 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class bitmask {
+    static final int MON = 1 << 0;
+    static final int TUE = 1 << 1;
+    static final int WED = 1 << 2;
+    static final int THU = 1 << 3;
+    static final int FRI = 1 << 4;
+    static final int SAT = 1 << 5;
+    static final int SUN = 1 << 6;
     public static void main(String[] args) throws IOException {
         // 일주일중 내 근무일을 표시하는 비트마스크를 작성해보자
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -19,8 +26,20 @@ public class bitmask {
         * 0b11111111
         * 예상결과 : -1
         * */
-        char[] day = { 0b0000_0001, 0b0000_0010, 0b0000_0100, 0b0000_1000, 0b0001_0000, 0b0010_0000, 0b0100_0000};
-        System.out.println(day[0] +" "+ day[1]);
-        System.out.println(Integer.toBinaryString(-1));
+
+        int workDay = 0;
+
+        // if 월 수 금 근무
+        workDay |= MON;
+        workDay |= WED;
+        workDay |= FRI;
+
+        System.out.println(
+                Integer.toBinaryString(workDay)
+        );
+
+        // 요일별 근무 여부 확인
+        // 여기서 0은 0000000을 말하는거겠지?
+        boolean isWorking = (workDay & TUE) != 0;
     }
 }
