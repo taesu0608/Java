@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 public class floyd_warshall {
     public static void main(String[] args) {
+        final long INF = Long.MAX_VALUE / 2;
         int n = 5;
         long[][] dist = new long[n][n];
         int[][] edges = {
@@ -33,8 +34,16 @@ public class floyd_warshall {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 for (int k = 0; k < n; k++) {
+                    if (dist[j][i] == INF || dist[i][k] == INF){continue;}
                     dist[j][k] = Math.min(dist[j][k], dist[j][i] + dist[i][k]);
                 }
+            }
+        }
+
+        for (int i = 0; i < n; i++) {
+            if (dist[i][i] < 0) {
+                System.out.println("음수 사이클 존재");
+                break;
             }
         }
 
